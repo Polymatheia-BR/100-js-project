@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider de Comentários</title>
+    <style>
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bg-square {
+            display: flex;
+            flex-direction: column;
+            background-color: rgb(163, 90, 231);
+            width: 540px;
+            height: 240px;
+            border-radius: 10px;
+            box-shadow: 0 6px 10px #00000044;
+        }
+
+        img {
+            position: absolute;
+            align-self: center;
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            margin-top: -50px;
+            object-fit: cover;
+        }
+
+        p, i {
+            margin-left: 20px;
+            margin-right: 20px;
+            font-family: "Inter", sans-serif;
+            color: #DFDFDF;
+        }
+
+        #main-text {            
+            margin-top: 90px;
+            font-weight: 600;
+        }
+
+        #name {            
+            font-size: small;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-square">
+        <img src="./assets/img/pfp0.jpg" alt="Foto" id="pfp">
+        <p id="main-text">Excelente aplicativo! A interface é super simples de usar e as interações com outros usuários são rápidas e fáceis. Adoro poder acompanhar todos os comentários de forma organizada!</p>
+        <i id="name">Albert Einstein</i>
+    </div>
+    <script>
+        let texts = 
+        [
+            "Excelente aplicativo! A interface é super simples de usar e as interações com outros usuários são rápidas e fáceis. Adoro poder acompanhar todos os comentários de forma organizada!",
+            "Estou amando esse app! Ele torna muito mais fácil interagir e trocar ideias com pessoas que têm os mesmos interesses. A qualidade dos comentários é incrível e a moderação é eficiente.",
+            "Melhor app de comentários que já usei! Ele é rápido, intuitivo e tem uma comunidade bem engajada. A opção de responder aos comentários de forma direta facilita muito a conversa."
+        ]
+
+        let names = 
+        [
+            "Albert Einstein",
+            "Marie Curie",
+            "Nikola Tesla"
+        ]
+        
+        let i = 1
+        let change_text = () => {
+            if (i == texts.length) i = 0
+            document.getElementById('main-text').innerText = texts[i]
+            document.getElementById('name').innerText = names[i]
+            document.getElementById('pfp').src = `./assets/img/pfp${i}.jpg`
+            i++
+        }
+        setInterval(change_text, 10000)
+    </script>
+</body>
+</html>
