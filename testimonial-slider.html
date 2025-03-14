@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slider de Comentários</title>
     <style>
-
         body {
             display: flex;
             justify-content: center;
@@ -18,7 +17,7 @@
             padding: 0;
         }
 
-        .bg-square {
+        .container {
             display: flex;
             flex-direction: column;
             background-color: rgb(163, 90, 231);
@@ -56,32 +55,37 @@
     </style>
 </head>
 <body>
-    <div class="bg-square">
-        <img src="./assets/img/pfp0.jpg" alt="Foto" id="pfp">
+    <div class="container">
+        <img src="./assets/img/albert_einstein.jpg" alt="Foto do usuario" id="pfp">
         <p id="main-text">Excelente aplicativo! A interface é super simples de usar e as interações com outros usuários são rápidas e fáceis. Adoro poder acompanhar todos os comentários de forma organizada!</p>
         <i id="name">Albert Einstein</i>
     </div>
     <script>
-        let texts = 
+        let comments = 
         [
-            "Excelente aplicativo! A interface é super simples de usar e as interações com outros usuários são rápidas e fáceis. Adoro poder acompanhar todos os comentários de forma organizada!",
-            "Estou amando esse app! Ele torna muito mais fácil interagir e trocar ideias com pessoas que têm os mesmos interesses. A qualidade dos comentários é incrível e a moderação é eficiente.",
-            "Melhor app de comentários que já usei! Ele é rápido, intuitivo e tem uma comunidade bem engajada. A opção de responder aos comentários de forma direta facilita muito a conversa."
-        ]
-
-        let names = 
-        [
-            "Albert Einstein",
-            "Marie Curie",
-            "Nikola Tesla"
+            {
+                text: "Excelente aplicativo! A interface é super simples de usar e as interações com outros usuários são rápidas e fáceis. Adoro poder acompanhar todos os comentários de forma organizada!",
+                name: "Albert Einstein",
+                image: './assets/img/albert_einstein.jpg'
+            },
+            {
+                text: "Estou amando esse app! Ele torna muito mais fácil interagir e trocar ideias com pessoas que têm os mesmos interesses. A qualidade dos comentários é incrível e a moderação é eficiente.",
+                name: "Marie Curie",
+                image: './assets/img/marie_curie.jpg'
+            },
+            {
+                text: "Melhor app de comentários que já usei! Ele é rápido, intuitivo e tem uma comunidade bem engajada. A opção de responder aos comentários de forma direta facilita muito a conversa.",
+                name: "Nikola Tesla",
+                image: './assets/img/nikola_tesla.jpg'
+            },
         ]
         
         let i = 1
         let change_text = () => {
-            if (i == texts.length) i = 0
-            document.getElementById('main-text').innerText = texts[i]
-            document.getElementById('name').innerText = names[i]
-            document.getElementById('pfp').src = `./assets/img/pfp${i}.jpg`
+            if (i == comments.length) i = 0
+            document.getElementById('main-text').innerText = comments[i].text
+            document.getElementById('name').innerText = comments[i].name
+            document.getElementById('pfp').src = comments[i].image
             i++
         }
         setInterval(change_text, 10000)
