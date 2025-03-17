@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Gorjeta</title>
+    <style>
+
+        body {
+            background-color: #F2F2F2;
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+            font-family: "Heveltica", sans-serif;
+        }
+
+        #container {
+            width: 600px;
+            background-color: #FFF;
+            padding: 10px 20px;
+            box-shadow: 0 0 10px #00000055;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+        
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            font-weight: 400;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        input[type="number"] {
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: rgb(42, 177, 60);
+            color: #FFF;
+            border: none;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgb(27, 114, 39);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Calculadora de Gorjeta</h1>
+        <p>Coloque o valor da conta e da gorjeta para calcular o total.</p>
+        <form action="javascript:calculateTip()">
+            <div class="input-container">
+                <label for="bill">Valor da conta:</label>
+                <input type="number" name="bill" id="bill" value="100">
+                <label for="tip">Porcentagem da gorjeta:</label>
+                <input type="number" name="tip" id="tip" value="20" step="0.01">
+                <input type="submit" value="CALCULAR">
+            </div>
+        </form>
+        <p>Total: <strong id="total"></strong></p>
+    </div>
+    
+    <script>
+        let calculateTip = () => {
+            let bill = parseInt(document.getElementById('bill').value)
+            let tip = document.getElementById('tip').value        
+            document.getElementById('total').innerText = parseFloat(bill + (tip * bill / 100)).toFixed(2)
+        }
+    </script>
+</body>
+</html>
