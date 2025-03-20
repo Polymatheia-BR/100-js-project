@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">   
+    <title>Calculadora de Idade</title>
+    <style>
+        body {
+            background-color: #F8F8F8;
+            display: flex;            
+            justify-content: center;
+            font-family: "Inter", sans-serif;
+        }
+
+        #container {
+            width: 600px;
+            background-color: #FBFBFB;    
+            padding: 40px;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 0 10px #00000077;
+        }
+
+        h5 {
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 50%;
+        }
+
+        button {
+            background-color: #249ef0;
+            color: #FFF;
+            padding: 8px;
+            border: 1px solid transparent;
+            border-radius: 7px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+   <form action="javascript:calculate_age()" id="container">
+        <h1>Calculadora de Idade</h1>
+        <h5>Insira a sua data de nascimento</h5>
+        <input type="date" name="birthdate" id="birthdate" required> 
+        <br>
+        <button type="submit">Calcular Idade</button>
+        <h2 id="result">Você tem 0 anos de idade</h2>
+   </form>
+
+   <script>
+
+    document.getElementById('birthdate').setAttribute('max', new Date().toISOString().split('T')[0]);
+    
+    let calculate_age = () => {
+        let birthdate = new Date(document.getElementById("birthdate").value)
+        let currentDate = new Date()
+        let age = currentDate.getFullYear() - birthdate.getFullYear()
+
+        
+        if (currentDate.getMonth() <= birthdate.getMonth() && currentDate.getDate() <= birthdate.getDate() + 1) {
+            age = currentDate.getFullYear() - birthdate.getFullYear() - 1            
+        }
+        
+        if (currentDate.getFullYear == birthdate.getFullYear) {
+            age = 0
+        };
+        
+        document.getElementById('result').innerText = `Você possui ${age} anos de idade`
+    }
+   </script>
+</body>
+</html>
+
